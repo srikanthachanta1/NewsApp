@@ -13,8 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.newsapp.api.RetrofitInstance
 import com.example.newsapp.ui.theme.NewsAppTheme
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,9 +29,13 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Greeting("Android")
-                    //GlobalScope.launch {
-                    //    Log.e("RRR",RetrofitInstance.api.getBreakingNews().body().toString())
-                    //}
+
+                    CoroutineScope(Dispatchers.Main).launch {
+                        RetrofitInstance.api.getBreakingNews()
+                    }
+                    /*GlobalScope.launch {
+                        Log.e("RRR",RetrofitInstance.api.getBreakingNews().body().toString())
+                    }*/
 
                 }
             }

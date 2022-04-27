@@ -3,10 +3,10 @@ package com.example.newsapp
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "Articles")
+//@Entity(tableName = "Articles")
 data class Article(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
+   // @PrimaryKey(autoGenerate = true)
+    //val id: Int? = null,
     val author: String,
     val content: String,
     val description: String,
